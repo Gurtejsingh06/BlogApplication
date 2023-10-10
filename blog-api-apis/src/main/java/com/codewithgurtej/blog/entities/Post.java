@@ -3,6 +3,7 @@ package com.codewithgurtej.blog.entities;
 import java.util.Date;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "post")
@@ -28,6 +29,9 @@ public class Post {
 	
 	@ManyToOne
 	private User user;
+	
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+	private Set<Comment> comments = new HashSet<>();
 
 	public Post() {
 		super();
@@ -89,6 +93,15 @@ public class Post {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+	
 	
 	
 }

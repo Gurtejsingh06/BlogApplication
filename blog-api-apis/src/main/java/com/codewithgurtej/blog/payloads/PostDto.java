@@ -1,13 +1,6 @@
 package com.codewithgurtej.blog.payloads;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.codewithgurtej.blog.entities.Category;
-import com.codewithgurtej.blog.entities.User;
+import java.util.*;
 
 public class PostDto {
 	
@@ -18,6 +11,7 @@ public class PostDto {
 	private Date addedDate;
 	private CategoryDto category;
 	private UserDto user;
+	private Set<CommentDto> comments = new HashSet<>();
 	
 	public PostDto() {
 		super();
@@ -71,6 +65,18 @@ public class PostDto {
 	public void setUser(UserDto user) {
 		this.user = user;
 	}
+
+
+	public Set<CommentDto> getComments() {
+		return comments;
+	}
+
+
+	public void setComments(Set<CommentDto> comments) {
+		this.comments = comments;
+	}
+
+	
 	
 	
 	
